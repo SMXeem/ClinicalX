@@ -54,12 +54,20 @@ namespace ClinicalX.Controllers
             }
             return response;
         }
-        public HttpResponseMessage GetByArea(int areaId)
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// 
+        [HttpGet]
+        public HttpResponseMessage GetByArea(int id)
         {
             HttpResponseMessage response;
             try
             {
-                var result = _aClinicalXEntities.vHospitals.Where(w => w.Address == areaId).ToList();
+                var result = _aClinicalXEntities.vHospitals.Where(w => w.Address == id).ToList();
                 response = Request.CreateResponse(HttpStatusCode.Found, result);
             }
             catch (Exception e)
