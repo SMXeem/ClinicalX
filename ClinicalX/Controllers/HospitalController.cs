@@ -36,9 +36,9 @@ namespace ClinicalX.Controllers
 
         // GET: api/Hospital/5
         /// <summary>
-        /// To get hospital using district code
+        /// To get hospital using id
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Hospital Id</param>
         /// <returns></returns>
         public HttpResponseMessage Get(int id)
         {
@@ -56,9 +56,9 @@ namespace ClinicalX.Controllers
         }
 
         /// <summary>
-        /// 
+        /// To get hospital using district code
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Area Id</param>
         /// <returns></returns>
         /// 
         [HttpGet]

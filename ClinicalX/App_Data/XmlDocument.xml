@@ -523,10 +523,18 @@
         </member>
         <member name="M:ClinicalX.Controllers.HospitalController.Get(System.Int32)">
             <summary>
+            To get hospital using id
+            </summary>
+            <param name="id">Hospital Id</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClinicalX.Controllers.HospitalController.GetByArea(System.Int32)">
+            <summary>
             To get hospital using district code
             </summary>
-            <param name="id"></param>
+            <param name="id">Area Id</param>
             <returns></returns>
+            
         </member>
     </members>
 </doc>
