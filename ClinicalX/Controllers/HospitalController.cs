@@ -13,7 +13,7 @@ namespace ClinicalX.Controllers
     /// </summary>
     public class HospitalController : ApiController
     {
-        readonly ClinicalXEntities _aClinicalXEntities=new ClinicalXEntities();
+        private readonly ClinicalXEntities _aClinicalXEntities=new ClinicalXEntities();
         // GET: api/Hospital
         /// <summary>
         /// To get all Hospital
@@ -45,7 +45,21 @@ namespace ClinicalX.Controllers
             HttpResponseMessage response;
             try
             {
-                var result = _aClinicalXEntities.vHospitals.Where(w => w.Address == id).ToList();
+                var result = _aClinicalXEntities.vHospitals.Where(w => w.Id == id).ToList();
+                response = Request.CreateResponse(HttpStatusCode.Found, result);
+            }
+            catch (Exception e)
+            {
+                response = Request.CreateResponse(HttpStatusCode.NotFound, e);
+            }
+            return response;
+        }
+        public HttpResponseMessage GetByArea(int areaId)
+        {
+            HttpResponseMessage response;
+            try
+            {
+                var result = _aClinicalXEntities.vHospitals.Where(w => w.Address == areaId).ToList();
                 response = Request.CreateResponse(HttpStatusCode.Found, result);
             }
             catch (Exception e)
