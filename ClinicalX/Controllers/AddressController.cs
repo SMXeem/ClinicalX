@@ -13,7 +13,8 @@ namespace ClinicalX.Controllers
     /// </summary>
     public class AddressController : ApiController
     {
-        readonly ClinicalXEntities _aClinicalXEntities = new ClinicalXEntities();
+        private readonly ClinicalXEntities _aClinicalXEntities = new ClinicalXEntities();
+        private HttpResponseMessage _response;
         // GET: api/Address
         /// <summary>
         /// To get all District
@@ -21,18 +22,17 @@ namespace ClinicalX.Controllers
         /// <returns></returns>
         public HttpResponseMessage Get()
         {
-            HttpResponseMessage response;
             try
             {
                 var result = _aClinicalXEntities.Districts.ToList();
-                response = Request.CreateResponse(HttpStatusCode.Found, result);
+                _response = Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception e)
             {
-               response = Request.CreateResponse(HttpStatusCode.NotFound, e);
+               _response = Request.CreateResponse(HttpStatusCode.NotFound, e);
             }
             
-            return response;
+            return _response;
         }
 
         // GET: api/Address/5

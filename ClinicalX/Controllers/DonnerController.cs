@@ -9,22 +9,21 @@ using ClinicalX.Models;
 namespace ClinicalX.Controllers
 {
     /// <summary>
-    /// Doctor Info
+    /// Donner Info
     /// </summary>
-    public class DoctorController : ApiController
+    public class DonnerController : ApiController
     {
         private readonly ClinicalXEntities _aClinicalXEntities = new ClinicalXEntities();
         private HttpResponseMessage _response;
         /// <summary>
-        /// To get All Doctor
+        /// To get all donner
         /// </summary>
         /// <returns></returns>
-        // GET: api/Doctor
         public HttpResponseMessage Get()
         {
             try
             {
-                var result = _aClinicalXEntities.vDoctors.ToList();
+                var result = _aClinicalXEntities.vDonners.ToList();
                 _response = Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception e)
@@ -34,16 +33,15 @@ namespace ClinicalX.Controllers
             return _response;
         }
         /// <summary>
-        /// To get a specific doctor
+        /// To get donner by id
         /// </summary>
-        /// <param name="id">Doctor Id</param>
-        /// <returns>Doctor Object and Message</returns>
-        // GET: api/Doctor/5
+        /// <param name="id"></param>
+        /// <returns></returns>
         public HttpResponseMessage Get(int id)
         {
             try
             {
-                var result = _aClinicalXEntities.vDoctors.Where(w => w.Id == id).ToList();
+                var result = _aClinicalXEntities.vDonners.Where(w => w.Id == id).ToList();
                 _response = Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception e)
@@ -52,9 +50,8 @@ namespace ClinicalX.Controllers
             }
             return _response;
         }
-
         /// <summary>
-        /// To get doctor by hospital id
+        /// To get donner by Hospital
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -62,7 +59,7 @@ namespace ClinicalX.Controllers
         {
             try
             {
-                var result = _aClinicalXEntities.vDoctors.Where(w => w.HospitalId == id).ToList();
+                var result = _aClinicalXEntities.vDonners.Where(w => w.HospitalId == id).ToList();
                 _response = Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception e)
@@ -72,15 +69,15 @@ namespace ClinicalX.Controllers
             return _response;
         }
         /// <summary>
-        /// To get doctor by Specialist
+        /// To get donner by BloodGroup
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public HttpResponseMessage GetBySpecialist(int id)
+        public HttpResponseMessage GetByBloodGroup(int id)
         {
             try
             {
-                var result = _aClinicalXEntities.vDoctors.Where(w => w.Speciality == id).ToList();
+                var result = _aClinicalXEntities.vDonners.Where(w => w.BloodGroup == id).ToList();
                 _response = Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception e)
@@ -89,18 +86,17 @@ namespace ClinicalX.Controllers
             }
             return _response;
         }
-
         /// <summary>
-        /// To get doctor by HospitalId and Specialist
+        /// To get donner by HospitalId and BloodGroupId
         /// </summary>
         /// <param name="hospitalId"></param>
-        /// <param name="specialist"></param>
+        /// <param name="bloodGroupId"></param>
         /// <returns></returns>
-        public HttpResponseMessage GetByHospitalSpecialist(int hospitalId,int specialist)
+        public HttpResponseMessage GetByHospitalBloodGroup(int hospitalId,int bloodGroupId)
         {
             try
             {
-                var result = _aClinicalXEntities.vDoctors.Where(w => w.HospitalId == hospitalId && w.Speciality == specialist).ToList();
+                var result = _aClinicalXEntities.vDonners.Where(w => w.HospitalId == hospitalId && w.BloodGroup == bloodGroupId).ToList();
                 _response = Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception e)
@@ -109,20 +105,5 @@ namespace ClinicalX.Controllers
             }
             return _response;
         }
-
-        // POST: api/Doctor
-        //public void Post([FromBody]string value)
-        //{
-        //}
-
-        //// PUT: api/Doctor/5
-        //public void Put(int id, [FromBody]string value)
-        //{
-        //}
-
-        //// DELETE: api/Doctor/5
-        //public void Delete(int id)
-        //{
-        //}
     }
 }

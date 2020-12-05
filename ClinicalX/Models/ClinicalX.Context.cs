@@ -25,12 +25,15 @@ namespace ClinicalX.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<BloodGroup> BloodGroups { get; set; }
+        public virtual DbSet<Designation> Designations { get; set; }
         public virtual DbSet<District> Districts { get; set; }
         public virtual DbSet<Doctor> Doctors { get; set; }
         public virtual DbSet<Donner> Donners { get; set; }
         public virtual DbSet<Hospital> Hospitals { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }
         public virtual DbSet<vDoctor> vDoctors { get; set; }
+        public virtual DbSet<vDonner> vDonners { get; set; }
         public virtual DbSet<vHospital> vHospitals { get; set; }
     }
 }

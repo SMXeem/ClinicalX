@@ -20,6 +20,6 @@ namespace ClinicalX.Models
         public int Age { get; set; }
         public string Gender { get; set; }
         public string Mobile { get; set; }
-        public string BloodGroup { get; set; }
+        public int BloodGroup { get; set; }
     }
 }

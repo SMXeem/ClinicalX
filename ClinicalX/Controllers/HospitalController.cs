@@ -14,6 +14,8 @@ namespace ClinicalX.Controllers
     public class HospitalController : ApiController
     {
         private readonly ClinicalXEntities _aClinicalXEntities=new ClinicalXEntities();
+
+        private HttpResponseMessage _response;
         // GET: api/Hospital
         /// <summary>
         /// To get all Hospital
@@ -21,17 +23,16 @@ namespace ClinicalX.Controllers
         /// <returns></returns>
         public HttpResponseMessage Get()
         {
-            HttpResponseMessage response;
             try
             {
                 var result = _aClinicalXEntities.vHospitals.ToList();
-                response = Request.CreateResponse(HttpStatusCode.Found, result);
+                _response = Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception e)
             {
-                response = Request.CreateResponse(HttpStatusCode.NotFound, e);
+                _response = Request.CreateResponse(HttpStatusCode.NotFound, e);
             }
-            return response;
+            return _response;
         }
 
         // GET: api/Hospital/5
@@ -42,17 +43,16 @@ namespace ClinicalX.Controllers
         /// <returns></returns>
         public HttpResponseMessage Get(int id)
         {
-            HttpResponseMessage response;
             try
             {
                 var result = _aClinicalXEntities.vHospitals.Where(w => w.Id == id).ToList();
-                response = Request.CreateResponse(HttpStatusCode.Found, result);
+                _response = Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception e)
             {
-                response = Request.CreateResponse(HttpStatusCode.NotFound, e);
+                _response = Request.CreateResponse(HttpStatusCode.NotFound, e);
             }
-            return response;
+            return _response;
         }
 
         /// <summary>
@@ -64,17 +64,16 @@ namespace ClinicalX.Controllers
         [HttpGet]
         public HttpResponseMessage GetByArea(int id)
         {
-            HttpResponseMessage response;
             try
             {
                 var result = _aClinicalXEntities.vHospitals.Where(w => w.Address == id).ToList();
-                response = Request.CreateResponse(HttpStatusCode.Found, result);
+                _response = Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception e)
             {
-                response = Request.CreateResponse(HttpStatusCode.NotFound, e);
+                _response = Request.CreateResponse(HttpStatusCode.NotFound, e);
             }
-            return response;
+            return _response;
         }
 
         // POST: api/Hospital

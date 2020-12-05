@@ -5,13 +5,16 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="b9f5bd90c17240568e4b5116766c7746" Name="Diagram1">
-        <EntityTypeShape EntityType="ClinicalXModel.District" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="ClinicalXModel.Doctor" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="ClinicalXModel.Donner" Width="1.5" PointX="0.75" PointY="3.75" />
-        <EntityTypeShape EntityType="ClinicalXModel.Hospital" Width="1.5" PointX="2.75" PointY="3.75" />
-        <EntityTypeShape EntityType="ClinicalXModel.Patient" Width="1.5" PointX="4.75" PointY="0.75" />
-        <EntityTypeShape EntityType="ClinicalXModel.vDoctor" Width="1.5" PointX="5.375" PointY="4.75" />
-        <EntityTypeShape EntityType="ClinicalXModel.vHospital" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ClinicalXModel.BloodGroup" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ClinicalXModel.Designation" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ClinicalXModel.District" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ClinicalXModel.Doctor" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="ClinicalXModel.Donner" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ClinicalXModel.Hospital" Width="1.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ClinicalXModel.Patient" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ClinicalXModel.vDoctor" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="ClinicalXModel.vDonner" Width="1.5" PointX="6.75" PointY="4.75" />
+        <EntityTypeShape EntityType="ClinicalXModel.vHospital" Width="1.5" PointX="2.75" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

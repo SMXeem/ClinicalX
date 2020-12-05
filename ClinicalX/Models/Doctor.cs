@@ -18,7 +18,7 @@ namespace ClinicalX.Models
         public int HospitalId { get; set; }
         public string Name { get; set; }
         public string Designation { get; set; }
-        public string Speciality { get; set; }
+        public int Speciality { get; set; }
         public string Mobile { get; set; }
     }
 }
