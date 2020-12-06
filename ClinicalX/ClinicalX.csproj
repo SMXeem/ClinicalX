@@ -189,9 +189,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ClinicalX.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Designation.cs">
-      <DependentUpon>ClinicalX.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\District.cs">
       <DependentUpon>ClinicalX.tt</DependentUpon>
     </Compile>
