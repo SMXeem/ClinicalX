@@ -45,7 +45,7 @@ namespace ClinicalX.Controllers
         {
             try
             {
-                var result = _aClinicalXEntities.vHospitals.Where(w => w.Id == id).ToList();
+                var result = _aClinicalXEntities.vHospitals.FirstOrDefault(w => w.Id == id);
                 _response = Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception e)

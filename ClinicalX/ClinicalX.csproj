@@ -207,6 +207,9 @@
     <Compile Include="Models\Patient.cs">
       <DependentUpon>ClinicalX.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Speciality.cs">
+      <DependentUpon>ClinicalX.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\vDoctor.cs">
       <DependentUpon>ClinicalX.tt</DependentUpon>
     </Compile>

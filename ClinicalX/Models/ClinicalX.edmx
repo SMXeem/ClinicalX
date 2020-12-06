@@ -12,13 +12,6 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Designation">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
         <EntityType Name="Districts">
           <Key>
             <PropertyRef Name="Id" />
@@ -45,7 +38,7 @@
           <Property Name="HospitalId" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Age" Type="int" Nullable="false" />
-          <Property Name="Gender" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="int" Nullable="false" />
           <Property Name="Mobile" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="BloodGroup" Type="int" Nullable="false" />
         </EntityType>
@@ -65,10 +58,17 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Age" Type="varchar" MaxLength="50" />
-          <Property Name="Gender" Type="varchar" MaxLength="50" />
+          <Property Name="Gender" Type="int" />
           <Property Name="Mobile" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Address" Type="int" Nullable="false" />
           <Property Name="BloodGroup" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Speciality">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'ClinicalX.dbo.vDoctor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -109,7 +109,7 @@ warning 6002: The table/view 'ClinicalX.dbo.vDonner' does not have a primary key
           <Property Name="HospitalId" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Age" Type="int" Nullable="false" />
-          <Property Name="Gender" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="int" Nullable="false" />
           <Property Name="Mobile" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="BloodGroup" Type="int" Nullable="false" />
           <Property Name="HospitalName" Type="varchar" MaxLength="50" Nullable="false" />
@@ -133,12 +133,12 @@ warning 6002: The table/view 'ClinicalX.dbo.vHospital' does not have a primary k
         </EntityType>
         <EntityContainer Name="ClinicalXModelStoreContainer">
           <EntitySet Name="BloodGroup" EntityType="Self.BloodGroup" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Designation" EntityType="Self.Designation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Districts" EntityType="Self.Districts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Donner" EntityType="Self.Donner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hospital" EntityType="Self.Hospital" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Speciality" EntityType="Self.Speciality" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="vDoctor" EntityType="Self.vDoctor" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vDoctor].[Id] AS [Id], 
@@ -180,12 +180,12 @@ warning 6002: The table/view 'ClinicalX.dbo.vHospital' does not have a primary k
       <Schema Namespace="ClinicalXModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="ClinicalXEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BloodGroups" EntityType="ClinicalXModel.BloodGroup" />
-          <EntitySet Name="Designations" EntityType="ClinicalXModel.Designation" />
           <EntitySet Name="Districts" EntityType="ClinicalXModel.District" />
           <EntitySet Name="Doctors" EntityType="ClinicalXModel.Doctor" />
           <EntitySet Name="Donners" EntityType="ClinicalXModel.Donner" />
           <EntitySet Name="Hospitals" EntityType="ClinicalXModel.Hospital" />
           <EntitySet Name="Patients" EntityType="ClinicalXModel.Patient" />
+          <EntitySet Name="Specialities" EntityType="ClinicalXModel.Speciality" />
           <EntitySet Name="vDoctors" EntityType="ClinicalXModel.vDoctor" />
           <EntitySet Name="vDonners" EntityType="ClinicalXModel.vDonner" />
           <EntitySet Name="vHospitals" EntityType="ClinicalXModel.vHospital" />
@@ -196,13 +196,6 @@ warning 6002: The table/view 'ClinicalX.dbo.vHospital' does not have a primary k
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Designation">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="District">
           <Key>
@@ -230,7 +223,7 @@ warning 6002: The table/view 'ClinicalX.dbo.vHospital' does not have a primary k
           <Property Name="HospitalId" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Age" Type="Int32" Nullable="false" />
-          <Property Name="Gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="Int32" Nullable="false" />
           <Property Name="Mobile" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="BloodGroup" Type="Int32" Nullable="false" />
         </EntityType>
@@ -250,10 +243,17 @@ warning 6002: The table/view 'ClinicalX.dbo.vHospital' does not have a primary k
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Age" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="Int32" />
           <Property Name="Mobile" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Address" Type="Int32" Nullable="false" />
           <Property Name="BloodGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Speciality">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="vDoctor">
           <Key>
@@ -290,7 +290,7 @@ warning 6002: The table/view 'ClinicalX.dbo.vHospital' does not have a primary k
           <Property Name="HospitalId" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Age" Type="Int32" Nullable="false" />
-          <Property Name="Gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="Int32" Nullable="false" />
           <Property Name="Mobile" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="BloodGroup" Type="Int32" Nullable="false" />
           <Property Name="HospitalName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -319,14 +319,6 @@ warning 6002: The table/view 'ClinicalX.dbo.vHospital' does not have a primary k
           <EntitySetMapping Name="BloodGroups">
             <EntityTypeMapping TypeName="ClinicalXModel.BloodGroup">
               <MappingFragment StoreEntitySet="BloodGroup">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Designations">
-            <EntityTypeMapping TypeName="ClinicalXModel.Designation">
-              <MappingFragment StoreEntitySet="Designation">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
@@ -383,6 +375,14 @@ warning 6002: The table/view 'ClinicalX.dbo.vHospital' does not have a primary k
                 <ScalarProperty Name="Mobile" ColumnName="Mobile" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Specialities">
+            <EntityTypeMapping TypeName="ClinicalXModel.Speciality">
+              <MappingFragment StoreEntitySet="Speciality">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

@@ -34,7 +34,7 @@ namespace ClinicalX.Controllers
             return _response;
         }
         /// <summary>
-        /// To get a specific doctor
+        /// To get doctor by Id
         /// </summary>
         /// <param name="id">Doctor Id</param>
         /// <returns>Doctor Object and Message</returns>
@@ -43,7 +43,7 @@ namespace ClinicalX.Controllers
         {
             try
             {
-                var result = _aClinicalXEntities.vDoctors.Where(w => w.Id == id).ToList();
+                var result = _aClinicalXEntities.vDoctors.FirstOrDefault(w => w.Id == id);
                 _response = Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception e)

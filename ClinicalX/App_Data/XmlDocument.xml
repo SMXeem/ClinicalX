@@ -505,10 +505,72 @@
         </member>
         <member name="M:ClinicalX.Controllers.DoctorController.Get(System.Int32)">
             <summary>
-            To get a specific doctor
+            To get doctor by Id
             </summary>
             <param name="id">Doctor Id</param>
             <returns>Doctor Object and Message</returns>
+        </member>
+        <member name="M:ClinicalX.Controllers.DoctorController.GetByHospital(System.Int32)">
+            <summary>
+            To get doctor by hospital id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClinicalX.Controllers.DoctorController.GetBySpecialist(System.Int32)">
+            <summary>
+            To get doctor by Specialist
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClinicalX.Controllers.DoctorController.GetByHospitalSpecialist(System.Int32,System.Int32)">
+            <summary>
+            To get doctor by HospitalId and Specialist
+            </summary>
+            <param name="hospitalId"></param>
+            <param name="specialist"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ClinicalX.Controllers.DonnerController">
+            <summary>
+            Donner Info
+            </summary>
+        </member>
+        <member name="M:ClinicalX.Controllers.DonnerController.Get">
+            <summary>
+            To get all donner
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClinicalX.Controllers.DonnerController.Get(System.Int32)">
+            <summary>
+            To get donner by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClinicalX.Controllers.DonnerController.GetByHospital(System.Int32)">
+            <summary>
+            To get donner by Hospital
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClinicalX.Controllers.DonnerController.GetByBloodGroup(System.Int32)">
+            <summary>
+            To get donner by BloodGroup
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClinicalX.Controllers.DonnerController.GetByHospitalBloodGroup(System.Int32,System.Int32)">
+            <summary>
+            To get donner by HospitalId and BloodGroupId
+            </summary>
+            <param name="hospitalId"></param>
+            <param name="bloodGroupId"></param>
+            <returns></returns>
         </member>
         <member name="T:ClinicalX.Controllers.HospitalController">
             <summary>
