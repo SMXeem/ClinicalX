@@ -12,14 +12,9 @@ namespace ClinicalX.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Patient
+    public partial class Gender
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Age { get; set; }
-        public int Gender { get; set; }
-        public string Mobile { get; set; }
-        public int Address { get; set; }
-        public int BloodGroup { get; set; }
     }
 }

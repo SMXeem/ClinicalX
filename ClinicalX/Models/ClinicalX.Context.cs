@@ -29,6 +29,7 @@ namespace ClinicalX.Models
         public virtual DbSet<District> Districts { get; set; }
         public virtual DbSet<Doctor> Doctors { get; set; }
         public virtual DbSet<Donner> Donners { get; set; }
+        public virtual DbSet<Gender> Genders { get; set; }
         public virtual DbSet<Hospital> Hospitals { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }
         public virtual DbSet<Speciality> Specialities { get; set; }

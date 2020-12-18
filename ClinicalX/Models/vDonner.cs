@@ -23,5 +23,6 @@ namespace ClinicalX.Models
         public int BloodGroup { get; set; }
         public string HospitalName { get; set; }
         public string BloodGroupName { get; set; }
+        public string GenderName { get; set; }
     }
 }
