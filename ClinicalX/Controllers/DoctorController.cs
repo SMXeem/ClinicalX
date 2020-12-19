@@ -109,6 +109,23 @@ namespace ClinicalX.Controllers
             }
             return _response;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public HttpResponseMessage GetSpecialities()
+        {
+            try
+            {
+                var result = _aClinicalXEntities.Specialities.ToList();
+                _response = Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception e)
+            {
+                _response = Request.CreateResponse(HttpStatusCode.NotFound, e);
+            }
+            return _response;
+        }
 
         // POST: api/Doctor
         //public void Post([FromBody]string value)

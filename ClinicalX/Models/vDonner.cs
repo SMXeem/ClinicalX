@@ -15,14 +15,13 @@ namespace ClinicalX.Models
     public partial class vDonner
     {
         public int Id { get; set; }
-        public int HospitalId { get; set; }
+        public int Address { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
         public int Gender { get; set; }
         public string Mobile { get; set; }
         public int BloodGroup { get; set; }
-        public string HospitalName { get; set; }
+        public string DistrictName { get; set; }
         public string BloodGroupName { get; set; }
-        public string GenderName { get; set; }
     }
 }

@@ -532,6 +532,12 @@
             <param name="specialist"></param>
             <returns></returns>
         </member>
+        <member name="M:ClinicalX.Controllers.DoctorController.GetSpecialities">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:ClinicalX.Controllers.DonnerController">
             <summary>
             Donner Info
@@ -550,9 +556,9 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:ClinicalX.Controllers.DonnerController.GetByHospital(System.Int32)">
+        <member name="M:ClinicalX.Controllers.DonnerController.GetByAddress(System.Int32)">
             <summary>
-            To get donner by Hospital
+            To get donner by address
             </summary>
             <param name="id"></param>
             <returns></returns>
@@ -564,11 +570,11 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:ClinicalX.Controllers.DonnerController.GetByHospitalBloodGroup(System.Int32,System.Int32)">
+        <member name="M:ClinicalX.Controllers.DonnerController.GetByAddressBloodGroup(System.Int32,System.Int32)">
             <summary>
-            To get donner by HospitalId and BloodGroupId
+            To get donner by address and BloodGroupId
             </summary>
-            <param name="hospitalId"></param>
+            <param name="addressId"></param>
             <param name="bloodGroupId"></param>
             <returns></returns>
         </member>

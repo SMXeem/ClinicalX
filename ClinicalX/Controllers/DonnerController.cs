@@ -51,15 +51,15 @@ namespace ClinicalX.Controllers
             return _response;
         }
         /// <summary>
-        /// To get donner by Hospital
+        /// To get donner by address
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public HttpResponseMessage GetByHospital(int id)
+        public HttpResponseMessage GetByAddress(int id)
         {
             try
             {
-                var result = _aClinicalXEntities.vDonners.Where(w => w.HospitalId == id).ToList();
+                var result = _aClinicalXEntities.vDonners.Where(w => w.Address == id).ToList();
                 _response = Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception e)
@@ -86,17 +86,18 @@ namespace ClinicalX.Controllers
             }
             return _response;
         }
+
         /// <summary>
-        /// To get donner by HospitalId and BloodGroupId
+        /// To get donner by address and BloodGroupId
         /// </summary>
-        /// <param name="hospitalId"></param>
+        /// <param name="addressId"></param>
         /// <param name="bloodGroupId"></param>
         /// <returns></returns>
-        public HttpResponseMessage GetByHospitalBloodGroup(int hospitalId,int bloodGroupId)
+        public HttpResponseMessage GetByAddressBloodGroup(int addressId,int bloodGroupId)
         {
             try
             {
-                var result = _aClinicalXEntities.vDonners.Where(w => w.HospitalId == hospitalId && w.BloodGroup == bloodGroupId).ToList();
+                var result = _aClinicalXEntities.vDonners.Where(w => w.Address == addressId && w.BloodGroup == bloodGroupId).ToList();
                 _response = Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception e)
