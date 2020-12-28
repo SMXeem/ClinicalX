@@ -4,13 +4,25 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ClinicalXModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ClinicalXModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BloodGroup">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="BookedSeat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HospitalId" Type="int" />
+          <Property Name="BACCabin" Type="int" />
+          <Property Name="BNonACCabin" Type="int" />
+          <Property Name="BMaleWard" Type="int" />
+          <Property Name="BFemaleWard" Type="int" />
+          <Property Name="BICU" Type="int" />
         </EntityType>
         <EntityType Name="Districts">
           <Key>
@@ -77,6 +89,18 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="TotalSeat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HospitalId" Type="int" />
+          <Property Name="ACCabin" Type="int" />
+          <Property Name="NonACCabin" Type="int" />
+          <Property Name="MaleWard" Type="int" />
+          <Property Name="FemaleWard" Type="int" />
+          <Property Name="ICU" Type="int" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'ClinicalX.dbo.vDoctor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vDoctor">
@@ -137,9 +161,20 @@ warning 6002: The table/view 'ClinicalX.dbo.vHospital' does not have a primary k
           <Property Name="Mobile" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Address" Type="int" Nullable="false" />
           <Property Name="DistrictName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACCabin" Type="int" />
+          <Property Name="NonACCabin" Type="int" />
+          <Property Name="MaleWard" Type="int" />
+          <Property Name="FemaleWard" Type="int" />
+          <Property Name="ICU" Type="int" />
+          <Property Name="BACCabin" Type="int" />
+          <Property Name="BNonACCabin" Type="int" />
+          <Property Name="BMaleWard" Type="int" />
+          <Property Name="BFemaleWard" Type="int" />
+          <Property Name="BICU" Type="int" />
         </EntityType>
         <EntityContainer Name="ClinicalXModelStoreContainer">
           <EntitySet Name="BloodGroup" EntityType="Self.BloodGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BookedSeat" EntityType="Self.BookedSeat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Districts" EntityType="Self.Districts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Donner" EntityType="Self.Donner" Schema="dbo" store:Type="Tables" />
@@ -147,6 +182,7 @@ warning 6002: The table/view 'ClinicalX.dbo.vHospital' does not have a primary k
           <EntitySet Name="Hospital" EntityType="Self.Hospital" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Speciality" EntityType="Self.Speciality" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TotalSeat" EntityType="Self.TotalSeat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="vDoctor" EntityType="Self.vDoctor" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vDoctor].[Id] AS [Id], 
@@ -178,12 +214,21 @@ warning 6002: The table/view 'ClinicalX.dbo.vHospital' does not have a primary k
     [vHospital].[Name] AS [Name], 
     [vHospital].[Mobile] AS [Mobile], 
     [vHospital].[Address] AS [Address], 
-    [vHospital].[DistrictName] AS [DistrictName]
+    [vHospital].[DistrictName] AS [DistrictName], 
+    [vHospital].[ACCabin] AS [ACCabin], 
+    [vHospital].[NonACCabin] AS [NonACCabin], 
+    [vHospital].[MaleWard] AS [MaleWard], 
+    [vHospital].[FemaleWard] AS [FemaleWard], 
+    [vHospital].[ICU] AS [ICU], 
+    [vHospital].[BACCabin] AS [BACCabin], 
+    [vHospital].[BNonACCabin] AS [BNonACCabin], 
+    [vHospital].[BMaleWard] AS [BMaleWard], 
+    [vHospital].[BFemaleWard] AS [BFemaleWard], 
+    [vHospital].[BICU] AS [BICU]
     FROM [dbo].[vHospital] AS [vHospital]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ClinicalXModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -300,20 +345,6 @@ warning 6002: The table/view 'ClinicalX.dbo.vHospital' does not have a primary k
           <Property Name="DistrictName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="BloodGroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="vHospital">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Mobile" />
-            <PropertyRef Name="Address" />
-            <PropertyRef Name="DistrictName" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Address" Type="Int32" Nullable="false" />
-          <Property Name="DistrictName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
         <EntityContainer Name="ClinicalXEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BloodGroups" EntityType="Self.BloodGroup" />
           <EntitySet Name="Districts" EntityType="Self.District" />
@@ -325,8 +356,58 @@ warning 6002: The table/view 'ClinicalX.dbo.vHospital' does not have a primary k
           <EntitySet Name="Specialities" EntityType="Self.Speciality" />
           <EntitySet Name="vDoctors" EntityType="Self.vDoctor" />
           <EntitySet Name="vDonners" EntityType="Self.vDonner" />
-          <EntitySet Name="vHospitals" EntityType="Self.vHospital" />
+          <EntitySet Name="BookedSeats" EntityType="ClinicalXModel.BookedSeat" />
+          <EntitySet Name="TotalSeats" EntityType="ClinicalXModel.TotalSeat" />
+          <EntitySet Name="vHospitals" EntityType="ClinicalXModel.vHospital" />
         </EntityContainer>
+        <EntityType Name="BookedSeat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HospitalId" Type="Int32" />
+          <Property Name="BACCabin" Type="Int32" />
+          <Property Name="BNonACCabin" Type="Int32" />
+          <Property Name="BMaleWard" Type="Int32" />
+          <Property Name="BFemaleWard" Type="Int32" />
+          <Property Name="BICU" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TotalSeat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HospitalId" Type="Int32" />
+          <Property Name="ACCabin" Type="Int32" />
+          <Property Name="NonACCabin" Type="Int32" />
+          <Property Name="MaleWard" Type="Int32" />
+          <Property Name="FemaleWard" Type="Int32" />
+          <Property Name="ICU" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vHospital">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Mobile" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="DistrictName" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="Int32" Nullable="false" />
+          <Property Name="DistrictName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ACCabin" Type="Int32" />
+          <Property Name="NonACCabin" Type="Int32" />
+          <Property Name="MaleWard" Type="Int32" />
+          <Property Name="FemaleWard" Type="Int32" />
+          <Property Name="ICU" Type="Int32" />
+          <Property Name="BACCabin" Type="Int32" />
+          <Property Name="BNonACCabin" Type="Int32" />
+          <Property Name="BMaleWard" Type="Int32" />
+          <Property Name="BFemaleWard" Type="Int32" />
+          <Property Name="BICU" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -442,14 +523,50 @@ warning 6002: The table/view 'ClinicalX.dbo.vHospital' does not have a primary k
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="BookedSeats">
+            <EntityTypeMapping TypeName="ClinicalXModel.BookedSeat">
+              <MappingFragment StoreEntitySet="BookedSeat">
+                <ScalarProperty Name="BICU" ColumnName="BICU" />
+                <ScalarProperty Name="BFemaleWard" ColumnName="BFemaleWard" />
+                <ScalarProperty Name="BMaleWard" ColumnName="BMaleWard" />
+                <ScalarProperty Name="BNonACCabin" ColumnName="BNonACCabin" />
+                <ScalarProperty Name="BACCabin" ColumnName="BACCabin" />
+                <ScalarProperty Name="HospitalId" ColumnName="HospitalId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TotalSeats">
+            <EntityTypeMapping TypeName="ClinicalXModel.TotalSeat">
+              <MappingFragment StoreEntitySet="TotalSeat">
+                <ScalarProperty Name="ICU" ColumnName="ICU" />
+                <ScalarProperty Name="FemaleWard" ColumnName="FemaleWard" />
+                <ScalarProperty Name="MaleWard" ColumnName="MaleWard" />
+                <ScalarProperty Name="NonACCabin" ColumnName="NonACCabin" />
+                <ScalarProperty Name="ACCabin" ColumnName="ACCabin" />
+                <ScalarProperty Name="HospitalId" ColumnName="HospitalId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="vHospitals">
             <EntityTypeMapping TypeName="ClinicalXModel.vHospital">
               <MappingFragment StoreEntitySet="vHospital">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="BICU" ColumnName="BICU" />
+                <ScalarProperty Name="BFemaleWard" ColumnName="BFemaleWard" />
+                <ScalarProperty Name="BMaleWard" ColumnName="BMaleWard" />
+                <ScalarProperty Name="BNonACCabin" ColumnName="BNonACCabin" />
+                <ScalarProperty Name="BACCabin" ColumnName="BACCabin" />
+                <ScalarProperty Name="ICU" ColumnName="ICU" />
+                <ScalarProperty Name="FemaleWard" ColumnName="FemaleWard" />
+                <ScalarProperty Name="MaleWard" ColumnName="MaleWard" />
+                <ScalarProperty Name="NonACCabin" ColumnName="NonACCabin" />
+                <ScalarProperty Name="ACCabin" ColumnName="ACCabin" />
                 <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

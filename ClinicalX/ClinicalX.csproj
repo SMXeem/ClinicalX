@@ -174,6 +174,9 @@
     <Compile Include="Models\BloodGroup.cs">
       <DependentUpon>ClinicalX.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BookedSeat.cs">
+      <DependentUpon>ClinicalX.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ClinicalX.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -208,6 +211,9 @@
       <DependentUpon>ClinicalX.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Speciality.cs">
+      <DependentUpon>ClinicalX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TotalSeat.cs">
       <DependentUpon>ClinicalX.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vDoctor.cs">

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
+using System.Web;
 using System.Web.Http;
 using ClinicalX.Models;
 
@@ -77,9 +79,18 @@ namespace ClinicalX.Controllers
         }
 
         // POST: api/Hospital
-        //public void Post([FromBody]string value)
-        //{
-        //}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="file"></param>
+        [HttpPost]
+        public HttpResponseMessage Insert()
+        {
+            var request = HttpContext.Current.Request;
+            var a = request.Form["a"];
+            var file = request.Files["photo"];
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
 
         //// PUT: api/Hospital/5
         //public void Put(int id, [FromBody]string value)

@@ -604,5 +604,11 @@
             <returns></returns>
             
         </member>
+        <member name="M:ClinicalX.Controllers.HospitalController.Insert">
+            <summary>
+            
+            </summary>
+            <param name="file"></param>
+        </member>
     </members>
 </doc>
