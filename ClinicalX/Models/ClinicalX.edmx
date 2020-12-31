@@ -5,6 +5,17 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ClinicalXModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Ambulance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Address" Type="int" Nullable="false" />
+          <Property Name="DriverName" Type="varchar" MaxLength="50" />
+          <Property Name="AmbulanceNo" Type="varchar" MaxLength="50" />
+          <Property Name="Price" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mobile" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="BloodGroup">
           <Key>
             <PropertyRef Name="Id" />
@@ -102,6 +113,23 @@
           <Property Name="ICU" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'ClinicalX.dbo.vAmbulance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vAmbulance">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="DistrictName" />
+            <PropertyRef Name="Price" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Address" Type="int" Nullable="false" />
+          <Property Name="DistrictName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DriverName" Type="varchar" MaxLength="50" />
+          <Property Name="AmbulanceNo" Type="varchar" MaxLength="50" />
+          <Property Name="Price" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mobile" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'ClinicalX.dbo.vDoctor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vDoctor">
           <Key>
@@ -173,6 +201,7 @@ warning 6002: The table/view 'ClinicalX.dbo.vHospital' does not have a primary k
           <Property Name="BICU" Type="int" />
         </EntityType>
         <EntityContainer Name="ClinicalXModelStoreContainer">
+          <EntitySet Name="Ambulance" EntityType="Self.Ambulance" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BloodGroup" EntityType="Self.BloodGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BookedSeat" EntityType="Self.BookedSeat" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Districts" EntityType="Self.Districts" Schema="dbo" store:Type="Tables" />
@@ -183,6 +212,17 @@ warning 6002: The table/view 'ClinicalX.dbo.vHospital' does not have a primary k
           <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Speciality" EntityType="Self.Speciality" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TotalSeat" EntityType="Self.TotalSeat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vAmbulance" EntityType="Self.vAmbulance" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vAmbulance].[Id] AS [Id], 
+    [vAmbulance].[Address] AS [Address], 
+    [vAmbulance].[DistrictName] AS [DistrictName], 
+    [vAmbulance].[DriverName] AS [DriverName], 
+    [vAmbulance].[AmbulanceNo] AS [AmbulanceNo], 
+    [vAmbulance].[Price] AS [Price], 
+    [vAmbulance].[Mobile] AS [Mobile]
+    FROM [dbo].[vAmbulance] AS [vAmbulance]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vDoctor" EntityType="Self.vDoctor" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vDoctor].[Id] AS [Id], 
@@ -359,6 +399,8 @@ warning 6002: The table/view 'ClinicalX.dbo.vHospital' does not have a primary k
           <EntitySet Name="BookedSeats" EntityType="ClinicalXModel.BookedSeat" />
           <EntitySet Name="TotalSeats" EntityType="ClinicalXModel.TotalSeat" />
           <EntitySet Name="vHospitals" EntityType="ClinicalXModel.vHospital" />
+          <EntitySet Name="Ambulances" EntityType="ClinicalXModel.Ambulance" />
+          <EntitySet Name="vAmbulances" EntityType="ClinicalXModel.vAmbulance" />
         </EntityContainer>
         <EntityType Name="BookedSeat">
           <Key>
@@ -407,6 +449,32 @@ warning 6002: The table/view 'ClinicalX.dbo.vHospital' does not have a primary k
           <Property Name="BMaleWard" Type="Int32" />
           <Property Name="BFemaleWard" Type="Int32" />
           <Property Name="BICU" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Ambulance">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Address" Type="Int32" Nullable="false" />
+          <Property Name="DriverName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AmbulanceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="vAmbulance">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="DistrictName" />
+            <PropertyRef Name="Price" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="Int32" Nullable="false" />
+          <Property Name="DistrictName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DriverName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AmbulanceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -566,6 +634,31 @@ warning 6002: The table/view 'ClinicalX.dbo.vHospital' does not have a primary k
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Mobile" ColumnName="Mobile" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ambulances">
+            <EntityTypeMapping TypeName="ClinicalXModel.Ambulance">
+              <MappingFragment StoreEntitySet="Ambulance">
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="AmbulanceNo" ColumnName="AmbulanceNo" />
+                <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vAmbulances">
+            <EntityTypeMapping TypeName="ClinicalXModel.vAmbulance">
+              <MappingFragment StoreEntitySet="vAmbulance">
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="AmbulanceNo" ColumnName="AmbulanceNo" />
+                <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

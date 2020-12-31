@@ -164,12 +164,16 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AddressController.cs" />
+    <Compile Include="Controllers\AmbulanceController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\DonnerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HospitalController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ambulance.cs">
+      <DependentUpon>ClinicalX.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BloodGroup.cs">
       <DependentUpon>ClinicalX.tt</DependentUpon>
@@ -214,6 +218,9 @@
       <DependentUpon>ClinicalX.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TotalSeat.cs">
+      <DependentUpon>ClinicalX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vAmbulance.cs">
       <DependentUpon>ClinicalX.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vDoctor.cs">

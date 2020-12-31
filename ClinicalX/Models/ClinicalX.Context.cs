@@ -38,5 +38,7 @@ namespace ClinicalX.Models
         public virtual DbSet<BookedSeat> BookedSeats { get; set; }
         public virtual DbSet<TotalSeat> TotalSeats { get; set; }
         public virtual DbSet<vHospital> vHospitals { get; set; }
+        public virtual DbSet<Ambulance> Ambulances { get; set; }
+        public virtual DbSet<vAmbulance> vAmbulances { get; set; }
     }
 }
