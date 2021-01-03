@@ -11,16 +11,18 @@
         <EntityTypeShape EntityType="ClinicalXModel.Donner" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ClinicalXModel.Gender" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ClinicalXModel.Hospital" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicalXModel.Patient" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ClinicalXModel.Speciality" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ClinicalXModel.vDoctor" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ClinicalXModel.vDonner" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ClinicalXModel.BookedSeat" Width="1.5" PointX="5.375" PointY="7.75" />
         <EntityTypeShape EntityType="ClinicalXModel.TotalSeat" Width="1.5" PointX="7.375" PointY="7.75" />
         <EntityTypeShape EntityType="ClinicalXModel.vHospital" Width="1.5" PointX="9.375" PointY="0.75" />
-        <EntityTypeShape EntityType="ClinicalXModel.Ambulance" Width="1.5" PointX="9.375" PointY="5.75" />
-        <EntityTypeShape EntityType="ClinicalXModel.vAmbulance" Width="1.5" PointX="9.375" PointY="8.75" />
-      </Diagram>
+        <EntityTypeShape EntityType="ClinicalXModel.Ambu" Width="1.5" PointX="9.375" PointY="5.75" />
+        <EntityTypeShape EntityType="ClinicalXModel.vAmbu" Width="1.5" PointX="9.375" PointY="8.75" />
+        <EntityTypeShape EntityType="ClinicalXModel.BookedSeatPatient" Width="1.5" PointX="11.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ClinicalXModel.Patient" Width="1.5" PointX="0.75" PointY="11.75" />
+        <EntityTypeShape EntityType="ClinicalXModel.vBookedSeatPatient" Width="1.5" PointX="3.375" PointY="11.75" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

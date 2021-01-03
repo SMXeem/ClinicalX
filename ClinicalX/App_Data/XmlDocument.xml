@@ -549,12 +549,18 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:ClinicalX.Controllers.DonnerController.GetBloodGroup">
+            <summary>
+            Get all Blood group
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:ClinicalX.Controllers.DonnerController.Get(System.Int32)">
             <summary>
             To get donner by id
             </summary>
             <param name="id"></param>
-            <returns></returns>
+            <returns>List of Donner []</returns>
         </member>
         <member name="M:ClinicalX.Controllers.DonnerController.GetByAddress(System.Int32)">
             <summary>
@@ -608,7 +614,52 @@
             <summary>
             
             </summary>
-            <param name="file"></param>
+        </member>
+        <member name="M:ClinicalX.Controllers.HospitalController.BookingSeat(ClinicalX.Models.BookedSeatPatient)">
+            <summary>
+            Seat booking
+            </summary>
+            <param name="aBookedSeatPatient"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ClinicalX.Controllers.PatientsController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ClinicalX.Controllers.PatientsController.Get">
+            <summary>
+            Get list of patient
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClinicalX.Controllers.PatientsController.Get(System.Int32)">
+            <summary>
+            Get patient by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClinicalX.Controllers.PatientsController.GetPatientBooking(System.Int32)">
+            <summary>
+            Get booked seat details by patient id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClinicalX.Controllers.PatientsController.GetPatientByMobile(System.String)">
+            <summary>
+            Get patient by mobile no
+            </summary>
+            <param name="mobileNo">mobileNo</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClinicalX.Controllers.PatientsController.PostPatient(ClinicalX.Models.Patient)">
+            <summary>
+            
+            </summary>
+            <param name="patient"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>

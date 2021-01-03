@@ -16,7 +16,7 @@ namespace ClinicalX.Controllers
         {
             try
             {
-                var result = _aClinicalXEntities.vAmbulances.ToList();
+                var result = _aClinicalXEntities.vAmbus.ToList();
                 _response = Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception e)
@@ -31,7 +31,7 @@ namespace ClinicalX.Controllers
         {
             try
             {
-                var result = _aClinicalXEntities.vAmbulances.FirstOrDefault(w => w.Id == id);
+                var result = _aClinicalXEntities.vAmbus.FirstOrDefault(w => w.Id == id);
                 _response = Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception e)
@@ -44,7 +44,7 @@ namespace ClinicalX.Controllers
         {
             try
             {
-                var result = _aClinicalXEntities.vAmbulances.FirstOrDefault(w => w.Address == id);
+                var result = _aClinicalXEntities.vAmbus.FirstOrDefault(w => w.Address == id);
                 _response = Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception e)

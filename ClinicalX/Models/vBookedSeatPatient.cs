@@ -12,15 +12,16 @@ namespace ClinicalX.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Patient
+    public partial class vBookedSeatPatient
     {
         public int Id { get; set; }
+        public Nullable<int> HospitalId { get; set; }
+        public Nullable<int> PatientId { get; set; }
+        public Nullable<int> BPACCabin { get; set; }
+        public Nullable<int> BPNonACCabin { get; set; }
+        public Nullable<int> BPMaleWard { get; set; }
+        public Nullable<int> BPFemaleWard { get; set; }
+        public Nullable<int> BPICU { get; set; }
         public string Name { get; set; }
-        public string Age { get; set; }
-        public string Gender { get; set; }
-        public string Mobile { get; set; }
-        public string RefDoctor { get; set; }
-        public string Problem { get; set; }
-        public string Details { get; set; }
     }
 }

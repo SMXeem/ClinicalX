@@ -47,10 +47,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -169,16 +169,20 @@
     <Compile Include="Controllers\DonnerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HospitalController.cs" />
+    <Compile Include="Controllers\PatientsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Ambulance.cs">
+    <Compile Include="Models\Ambu.cs">
       <DependentUpon>ClinicalX.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BloodGroup.cs">
       <DependentUpon>ClinicalX.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BookedSeat.cs">
+      <DependentUpon>ClinicalX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BookedSeatPatient.cs">
       <DependentUpon>ClinicalX.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ClinicalX.Context.cs">
@@ -220,7 +224,10 @@
     <Compile Include="Models\TotalSeat.cs">
       <DependentUpon>ClinicalX.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\vAmbulance.cs">
+    <Compile Include="Models\vAmbu.cs">
+      <DependentUpon>ClinicalX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vBookedSeatPatient.cs">
       <DependentUpon>ClinicalX.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vDoctor.cs">
@@ -282,6 +289,7 @@
     <Content Include="Models\ClinicalX.edmx.diagram">
       <DependentUpon>ClinicalX.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

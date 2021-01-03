@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -82,7 +83,6 @@ namespace ClinicalX.Controllers
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="file"></param>
         [HttpPost]
         public HttpResponseMessage Insert()
         {
@@ -91,6 +91,55 @@ namespace ClinicalX.Controllers
             var file = request.Files["photo"];
             return new HttpResponseMessage(HttpStatusCode.OK);
         }
+        /// <summary>
+        /// Seat booking
+        /// </summary>
+        /// <param name="aBookedSeatPatient"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public HttpResponseMessage BookingSeat([FromBody]BookedSeatPatient aBookedSeatPatient)
+        {
+            try
+            {
+                var check = _aClinicalXEntities.BookedSeatPatients.FirstOrDefault(w =>
+                    w.PatientId == aBookedSeatPatient.PatientId
+                    && w.HospitalId==aBookedSeatPatient.HospitalId);
+                if (check!=null)
+                {
+                    check.BPACCabin += aBookedSeatPatient.BPACCabin;
+                    check.BPNonACCabin += aBookedSeatPatient.BPNonACCabin;
+                    check.BPMaleWard += aBookedSeatPatient.BPMaleWard;
+                    check.BPFemaleWard += aBookedSeatPatient.BPFemaleWard;
+                    check.BPICU += aBookedSeatPatient.BPICU;
+                    _aClinicalXEntities.BookedSeatPatients.AddOrUpdate(check);
+                    _aClinicalXEntities.SaveChanges();
+                }
+                else
+                {
+                    _aClinicalXEntities.BookedSeatPatients.Add(aBookedSeatPatient);
+                    _aClinicalXEntities.SaveChanges();
+                }
+
+                var bookedSeat = _aClinicalXEntities.BookedSeats.FirstOrDefault(w=>w.HospitalId==aBookedSeatPatient.HospitalId);
+                if (bookedSeat != null)
+                {
+                    bookedSeat.BACCabin += aBookedSeatPatient.BPACCabin;
+                    bookedSeat.BNonACCabin += aBookedSeatPatient.BPNonACCabin;
+                    bookedSeat.BMaleWard += aBookedSeatPatient.BPMaleWard;
+                    bookedSeat.BFemaleWard += aBookedSeatPatient.BPFemaleWard;
+                    bookedSeat.BICU += aBookedSeatPatient.BPICU;
+                    _aClinicalXEntities.BookedSeats.AddOrUpdate(bookedSeat);
+                    _aClinicalXEntities.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+
+                _response = Request.CreateResponse(HttpStatusCode.NotFound, e);
+            }
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
+
 
         //// PUT: api/Hospital/5
         //public void Put(int id, [FromBody]string value)

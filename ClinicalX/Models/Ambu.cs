@@ -12,15 +12,13 @@ namespace ClinicalX.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Patient
+    public partial class Ambu
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Age { get; set; }
-        public string Gender { get; set; }
+        public int Address { get; set; }
+        public string DriverName { get; set; }
+        public string AmbuNo { get; set; }
+        public string Price { get; set; }
         public string Mobile { get; set; }
-        public string RefDoctor { get; set; }
-        public string Problem { get; set; }
-        public string Details { get; set; }
     }
 }

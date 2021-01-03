@@ -31,14 +31,16 @@ namespace ClinicalX.Models
         public virtual DbSet<Donner> Donners { get; set; }
         public virtual DbSet<Gender> Genders { get; set; }
         public virtual DbSet<Hospital> Hospitals { get; set; }
-        public virtual DbSet<Patient> Patients { get; set; }
         public virtual DbSet<Speciality> Specialities { get; set; }
         public virtual DbSet<vDoctor> vDoctors { get; set; }
         public virtual DbSet<vDonner> vDonners { get; set; }
         public virtual DbSet<BookedSeat> BookedSeats { get; set; }
         public virtual DbSet<TotalSeat> TotalSeats { get; set; }
         public virtual DbSet<vHospital> vHospitals { get; set; }
-        public virtual DbSet<Ambulance> Ambulances { get; set; }
-        public virtual DbSet<vAmbulance> vAmbulances { get; set; }
+        public virtual DbSet<Ambu> Ambus { get; set; }
+        public virtual DbSet<vAmbu> vAmbus { get; set; }
+        public virtual DbSet<BookedSeatPatient> BookedSeatPatients { get; set; }
+        public virtual DbSet<Patient> Patients { get; set; }
+        public virtual DbSet<vBookedSeatPatient> vBookedSeatPatients { get; set; }
     }
 }
