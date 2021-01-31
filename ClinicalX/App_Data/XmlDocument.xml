@@ -610,11 +610,6 @@
             <returns></returns>
             
         </member>
-        <member name="M:ClinicalX.Controllers.HospitalController.Insert">
-            <summary>
-            
-            </summary>
-        </member>
         <member name="M:ClinicalX.Controllers.HospitalController.BookingSeat(ClinicalX.Models.BookedSeatPatient)">
             <summary>
             Seat booking

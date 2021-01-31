@@ -126,7 +126,61 @@ namespace ClinicalX.Controllers
             }
             return _response;
         }
-
+        public HttpResponseMessage GetAllDoctorBooking()
+        {
+            try
+            {
+                List<vDoctorBooking> result = _aClinicalXEntities.vDoctorBookings.ToList();
+                _response = Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception e)
+            {
+                _response = Request.CreateResponse(HttpStatusCode.NotFound, e);
+            }
+            return _response;
+        }
+        public HttpResponseMessage GetDoctorBookingByDocId(int doctorId)
+        {
+            try
+            {
+                List<vDoctorBooking> result = _aClinicalXEntities.vDoctorBookings.Where(w=>w.DoctorId==doctorId).ToList();
+                _response = Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception e)
+            {
+                _response = Request.CreateResponse(HttpStatusCode.NotFound, e);
+            }
+            return _response;
+        }
+        public HttpResponseMessage GetDoctorBookingByPatientId(int patientId)
+        {
+            try
+            {
+                List<vDoctorBooking> result = _aClinicalXEntities.vDoctorBookings.Where(w=>w.PatientId==patientId).ToList();
+                _response = Request.CreateResponse(HttpStatusCode.OK, result);
+            }
+            catch (Exception e)
+            {
+                _response = Request.CreateResponse(HttpStatusCode.NotFound, e);
+            }
+            return _response;
+        }
+        [HttpPost]
+        public HttpResponseMessage BookingDoctor(DoctorBooking aDoctorBooking)
+        {
+            var result = new DoctorBooking() { };
+            try
+            {
+                result=_aClinicalXEntities.DoctorBookings.Add(aDoctorBooking);
+                _aClinicalXEntities.SaveChanges();
+                _response = Request.CreateResponse(HttpStatusCode.BadRequest, result);
+            }
+            catch (Exception e)
+            {
+                _response = Request.CreateResponse(HttpStatusCode.NotFound, e);
+            }
+            return _response;
+        }
         // POST: api/Doctor
         //public void Post([FromBody]string value)
         //{

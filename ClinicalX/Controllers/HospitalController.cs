@@ -83,14 +83,14 @@ namespace ClinicalX.Controllers
         /// <summary>
         /// 
         /// </summary>
-        [HttpPost]
-        public HttpResponseMessage Insert()
-        {
-            var request = HttpContext.Current.Request;
-            var a = request.Form["a"];
-            var file = request.Files["photo"];
-            return new HttpResponseMessage(HttpStatusCode.OK);
-        }
+        //[HttpPost]
+        //public HttpResponseMessage Insert()
+        //{
+        //    var request = HttpContext.Current.Request;
+        //    var a = request.Form["a"];
+        //    var file = request.Files["photo"];
+        //    return new HttpResponseMessage(HttpStatusCode.OK);
+        //}
         /// <summary>
         /// Seat booking
         /// </summary>
