@@ -66,6 +66,15 @@
           <Property Name="Speciality" Type="int" Nullable="false" />
           <Property Name="Mobile" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="DoctorBooking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientId" Type="int" />
+          <Property Name="DoctorId" Type="int" />
+          <Property Name="Time" Type="datetime" />
+        </EntityType>
         <EntityType Name="Donner">
           <Key>
             <PropertyRef Name="Id" />
@@ -127,7 +136,7 @@
           <Property Name="ICU" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'ClinicalX.dbo.vAmbu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DB_A6D056_clinicalX.dbo.vAmbu' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vAmbu">
           <Key>
             <PropertyRef Name="Id" />
@@ -143,7 +152,7 @@ warning 6002: The table/view 'ClinicalX.dbo.vAmbu' does not have a primary key d
           <Property Name="Mobile" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'ClinicalX.dbo.vBookedSeatPatient' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DB_A6D056_clinicalX.dbo.vBookedSeatPatient' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vBookedSeatPatient">
           <Key>
             <PropertyRef Name="Id" />
@@ -160,7 +169,7 @@ warning 6002: The table/view 'ClinicalX.dbo.vBookedSeatPatient' does not have a 
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'ClinicalX.dbo.vDoctor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DB_A6D056_clinicalX.dbo.vDoctor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vDoctor">
           <Key>
             <PropertyRef Name="Id" />
@@ -182,7 +191,32 @@ warning 6002: The table/view 'ClinicalX.dbo.vDoctor' does not have a primary key
           <Property Name="SecialityName" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'ClinicalX.dbo.vDonner' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DB_A6D056_clinicalX.dbo.vDoctorBooking' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vDoctorBooking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="PatientId" Type="int" />
+          <Property Name="DoctorId" Type="int" />
+          <Property Name="Time" Type="datetime" />
+          <Property Name="PName" Type="varchar" MaxLength="50" />
+          <Property Name="PAge" Type="varchar" MaxLength="50" />
+          <Property Name="PGen" Type="varchar" MaxLength="50" />
+          <Property Name="PMob" Type="varchar" MaxLength="50" />
+          <Property Name="PRefDoc" Type="varchar" MaxLength="50" />
+          <Property Name="PProblem" Type="varchar" MaxLength="50" />
+          <Property Name="PDetails" Type="varchar(max)" />
+          <Property Name="DHospitalId" Type="int" />
+          <Property Name="DName" Type="varchar" MaxLength="50" />
+          <Property Name="DDesignation" Type="varchar" MaxLength="50" />
+          <Property Name="DSpeciality" Type="int" />
+          <Property Name="DMobile" Type="varchar" MaxLength="50" />
+          <Property Name="DHospitalName" Type="varchar" MaxLength="50" />
+          <Property Name="DSpecialityName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A6D056_clinicalX.dbo.vDonner' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vDonner">
           <Key>
             <PropertyRef Name="Id" />
@@ -205,7 +239,7 @@ warning 6002: The table/view 'ClinicalX.dbo.vDonner' does not have a primary key
           <Property Name="BloodGroupName" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'ClinicalX.dbo.vHospital' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DB_A6D056_clinicalX.dbo.vHospital' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vHospital">
           <Key>
             <PropertyRef Name="Id" />
@@ -237,6 +271,7 @@ warning 6002: The table/view 'ClinicalX.dbo.vHospital' does not have a primary k
           <EntitySet Name="BookedSeatPatient" EntityType="Self.BookedSeatPatient" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Districts" EntityType="Self.Districts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DoctorBooking" EntityType="Self.DoctorBooking" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Donner" EntityType="Self.Donner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hospital" EntityType="Self.Hospital" Schema="dbo" store:Type="Tables" />
@@ -278,6 +313,28 @@ warning 6002: The table/view 'ClinicalX.dbo.vHospital' does not have a primary k
     [vDoctor].[HospitalName] AS [HospitalName], 
     [vDoctor].[SecialityName] AS [SecialityName]
     FROM [dbo].[vDoctor] AS [vDoctor]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vDoctorBooking" EntityType="Self.vDoctorBooking" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vDoctorBooking].[Id] AS [Id], 
+    [vDoctorBooking].[PatientId] AS [PatientId], 
+    [vDoctorBooking].[DoctorId] AS [DoctorId], 
+    [vDoctorBooking].[Time] AS [Time], 
+    [vDoctorBooking].[PName] AS [PName], 
+    [vDoctorBooking].[PAge] AS [PAge], 
+    [vDoctorBooking].[PGen] AS [PGen], 
+    [vDoctorBooking].[PMob] AS [PMob], 
+    [vDoctorBooking].[PRefDoc] AS [PRefDoc], 
+    [vDoctorBooking].[PProblem] AS [PProblem], 
+    [vDoctorBooking].[PDetails] AS [PDetails], 
+    [vDoctorBooking].[DHospitalId] AS [DHospitalId], 
+    [vDoctorBooking].[DName] AS [DName], 
+    [vDoctorBooking].[DDesignation] AS [DDesignation], 
+    [vDoctorBooking].[DSpeciality] AS [DSpeciality], 
+    [vDoctorBooking].[DMobile] AS [DMobile], 
+    [vDoctorBooking].[DHospitalName] AS [DHospitalName], 
+    [vDoctorBooking].[DSpecialityName] AS [DSpecialityName]
+    FROM [dbo].[vDoctorBooking] AS [vDoctorBooking]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="vDonner" EntityType="Self.vDonner" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -435,6 +492,8 @@ warning 6002: The table/view 'ClinicalX.dbo.vHospital' does not have a primary k
           <EntitySet Name="BookedSeatPatients" EntityType="ClinicalXModel.BookedSeatPatient" />
           <EntitySet Name="Patients" EntityType="ClinicalXModel.Patient" />
           <EntitySet Name="vBookedSeatPatients" EntityType="ClinicalXModel.vBookedSeatPatient" />
+          <EntitySet Name="DoctorBookings" EntityType="ClinicalXModel.DoctorBooking" />
+          <EntitySet Name="vDoctorBookings" EntityType="ClinicalXModel.vDoctorBooking" />
           </EntityContainer>
         <EntityType Name="BookedSeat">
           <Key>
@@ -549,6 +608,38 @@ warning 6002: The table/view 'ClinicalX.dbo.vHospital' does not have a primary k
           <Property Name="BPFemaleWard" Type="Int32" />
           <Property Name="BPICU" Type="Int32" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DoctorBooking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientId" Type="Int32" />
+          <Property Name="DoctorId" Type="Int32" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="vDoctorBooking">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="PatientId" Type="Int32" />
+          <Property Name="DoctorId" Type="Int32" />
+          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="PName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PAge" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PGen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PMob" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PRefDoc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PProblem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DHospitalId" Type="Int32" />
+          <Property Name="DName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DDesignation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DSpeciality" Type="Int32" />
+          <Property Name="DMobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DHospitalName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DSpecialityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -763,6 +854,40 @@ warning 6002: The table/view 'ClinicalX.dbo.vHospital' does not have a primary k
                 <ScalarProperty Name="BPACCabin" ColumnName="BPACCabin" />
                 <ScalarProperty Name="PatientId" ColumnName="PatientId" />
                 <ScalarProperty Name="HospitalId" ColumnName="HospitalId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DoctorBookings">
+            <EntityTypeMapping TypeName="ClinicalXModel.DoctorBooking">
+              <MappingFragment StoreEntitySet="DoctorBooking">
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vDoctorBookings">
+            <EntityTypeMapping TypeName="ClinicalXModel.vDoctorBooking">
+              <MappingFragment StoreEntitySet="vDoctorBooking">
+                <ScalarProperty Name="DSpecialityName" ColumnName="DSpecialityName" />
+                <ScalarProperty Name="DHospitalName" ColumnName="DHospitalName" />
+                <ScalarProperty Name="DMobile" ColumnName="DMobile" />
+                <ScalarProperty Name="DSpeciality" ColumnName="DSpeciality" />
+                <ScalarProperty Name="DDesignation" ColumnName="DDesignation" />
+                <ScalarProperty Name="DName" ColumnName="DName" />
+                <ScalarProperty Name="DHospitalId" ColumnName="DHospitalId" />
+                <ScalarProperty Name="PDetails" ColumnName="PDetails" />
+                <ScalarProperty Name="PProblem" ColumnName="PProblem" />
+                <ScalarProperty Name="PRefDoc" ColumnName="PRefDoc" />
+                <ScalarProperty Name="PMob" ColumnName="PMob" />
+                <ScalarProperty Name="PGen" ColumnName="PGen" />
+                <ScalarProperty Name="PAge" ColumnName="PAge" />
+                <ScalarProperty Name="PName" ColumnName="PName" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

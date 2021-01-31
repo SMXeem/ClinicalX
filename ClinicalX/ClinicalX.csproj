@@ -206,6 +206,9 @@
     <Compile Include="Models\Doctor.cs">
       <DependentUpon>ClinicalX.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DoctorBooking.cs">
+      <DependentUpon>ClinicalX.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Donner.cs">
       <DependentUpon>ClinicalX.tt</DependentUpon>
     </Compile>
@@ -231,6 +234,9 @@
       <DependentUpon>ClinicalX.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vDoctor.cs">
+      <DependentUpon>ClinicalX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vDoctorBooking.cs">
       <DependentUpon>ClinicalX.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vDonner.cs">
@@ -290,6 +296,7 @@
       <DependentUpon>ClinicalX.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\IISProfile.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
