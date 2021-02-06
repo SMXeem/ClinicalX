@@ -79,18 +79,6 @@ namespace ClinicalX.Controllers
             return _response;
         }
 
-        // POST: api/Hospital
-        /// <summary>
-        /// 
-        /// </summary>
-        [HttpPost]
-        public HttpResponseMessage Insert()
-        {
-            var request = HttpContext.Current.Request;
-            var a = request.Form["a"];
-            var file = request.Files["photo"];
-            return new HttpResponseMessage(HttpStatusCode.OK);
-        }
         /// <summary>
         /// Seat booking
         /// </summary>

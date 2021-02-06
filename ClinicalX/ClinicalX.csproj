@@ -206,6 +206,9 @@
     <Compile Include="Models\Doctor.cs">
       <DependentUpon>ClinicalX.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DoctorBooking.cs">
+      <DependentUpon>ClinicalX.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Donner.cs">
       <DependentUpon>ClinicalX.tt</DependentUpon>
     </Compile>
@@ -231,6 +234,9 @@
       <DependentUpon>ClinicalX.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vDoctor.cs">
+      <DependentUpon>ClinicalX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\vDoctorBooking.cs">
       <DependentUpon>ClinicalX.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\vDonner.cs">

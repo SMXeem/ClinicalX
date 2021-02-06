@@ -42,5 +42,7 @@ namespace ClinicalX.Models
         public virtual DbSet<BookedSeatPatient> BookedSeatPatients { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }
         public virtual DbSet<vBookedSeatPatient> vBookedSeatPatients { get; set; }
+        public virtual DbSet<DoctorBooking> DoctorBookings { get; set; }
+        public virtual DbSet<vDoctorBooking> vDoctorBookings { get; set; }
     }
 }
