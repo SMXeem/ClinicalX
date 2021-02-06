@@ -538,6 +538,47 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:ClinicalX.Controllers.DoctorController.GetAllDoctorBooking">
+            <summary>
+            Get all doctor booking
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClinicalX.Controllers.DoctorController.GetAllDoctorBookingByDoctorId(System.Int32)">
+            <summary>
+            Get all booking by doctor id
+            </summary>
+            <param name="doctorId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClinicalX.Controllers.DoctorController.GetAllDoctorBookingByPatientId(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="patientId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClinicalX.Controllers.DoctorController.Post(ClinicalX.Models.DoctorBooking)">
+            <summary>
+            Insert a booking
+            </summary>
+            <param name="aBooking"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClinicalX.Controllers.DoctorController.UpdateBooking(ClinicalX.Models.DoctorBooking)">
+            <summary>
+            Update doctor booking
+            </summary>
+            <param name="aBooking"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClinicalX.Controllers.DoctorController.DeleteBooking(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="bookingId"></param>
+            <returns></returns>
+        </member>
         <member name="T:ClinicalX.Controllers.DonnerController">
             <summary>
             Donner Info

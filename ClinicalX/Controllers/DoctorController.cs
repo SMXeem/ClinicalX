@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -126,11 +127,16 @@ namespace ClinicalX.Controllers
             }
             return _response;
         }
+
+        /// <summary>
+        /// Get all doctor booking
+        /// </summary>
+        /// <returns></returns>
         public HttpResponseMessage GetAllDoctorBooking()
         {
             try
             {
-                List<vDoctorBooking> result = _aClinicalXEntities.vDoctorBookings.ToList();
+                var result = _aClinicalXEntities.vDoctorBookings.ToList();
                 _response = Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception e)
@@ -139,11 +145,17 @@ namespace ClinicalX.Controllers
             }
             return _response;
         }
-        public HttpResponseMessage GetDoctorBookingByDocId(int doctorId)
+
+        /// <summary>
+        /// Get all booking by doctor id
+        /// </summary>
+        /// <param name="doctorId"></param>
+        /// <returns></returns>
+        public HttpResponseMessage GetAllDoctorBookingByDoctorId(int doctorId)
         {
             try
             {
-                List<vDoctorBooking> result = _aClinicalXEntities.vDoctorBookings.Where(w=>w.DoctorId==doctorId).ToList();
+                var result = _aClinicalXEntities.vDoctorBookings.Where(w=>w.DoctorId==doctorId).ToList();
                 _response = Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception e)
@@ -152,11 +164,16 @@ namespace ClinicalX.Controllers
             }
             return _response;
         }
-        public HttpResponseMessage GetDoctorBookingByPatientId(int patientId)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="patientId"></param>
+        /// <returns></returns>
+        public HttpResponseMessage GetAllDoctorBookingByPatientId(int patientId)
         {
             try
             {
-                List<vDoctorBooking> result = _aClinicalXEntities.vDoctorBookings.Where(w=>w.PatientId==patientId).ToList();
+                var result = _aClinicalXEntities.vDoctorBookings.Where(w => w.PatientId == patientId).ToList();
                 _response = Request.CreateResponse(HttpStatusCode.OK, result);
             }
             catch (Exception e)
@@ -165,19 +182,75 @@ namespace ClinicalX.Controllers
             }
             return _response;
         }
+        /// <summary>
+        /// Insert a booking
+        /// </summary>
+        /// <param name="aBooking"></param>
+        /// <returns></returns>
         [HttpPost]
-        public HttpResponseMessage BookingDoctor(DoctorBooking aDoctorBooking)
+        public HttpResponseMessage Post(DoctorBooking aBooking)
         {
-            var result = new DoctorBooking() { };
             try
             {
-                result=_aClinicalXEntities.DoctorBookings.Add(aDoctorBooking);
-                _aClinicalXEntities.SaveChanges();
-                _response = Request.CreateResponse(HttpStatusCode.BadRequest, result);
+                if (!ModelState.IsValid)
+                {
+                    _response = Request.CreateResponse(HttpStatusCode.NotAcceptable);
+                }
+                aBooking.Time = DateTime.Now;
+                var a = _aClinicalXEntities.DoctorBookings.Add(aBooking);
+                var b = _aClinicalXEntities.SaveChanges();
+                _response = Request.CreateResponse(HttpStatusCode.OK, a);
             }
             catch (Exception e)
             {
-                _response = Request.CreateResponse(HttpStatusCode.NotFound, e);
+                _response = Request.CreateResponse(HttpStatusCode.BadRequest, e);
+            }
+            return _response;
+        }
+        /// <summary>
+        /// Update doctor booking
+        /// </summary>
+        /// <param name="aBooking"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public HttpResponseMessage UpdateBooking(DoctorBooking aBooking)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    _response = Request.CreateResponse(HttpStatusCode.NotAcceptable);
+                }
+                aBooking.Time = DateTime.Now;
+                _aClinicalXEntities.DoctorBookings.AddOrUpdate(aBooking);
+                var b = _aClinicalXEntities.SaveChanges();
+                _response = Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception e)
+            {
+                _response = Request.CreateResponse(HttpStatusCode.BadRequest, e);
+            }
+            return _response;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bookingId"></param>
+        /// <returns></returns>
+        [HttpDelete]
+        public HttpResponseMessage DeleteBooking(int bookingId)
+        {
+            try
+            {
+                var aBooking = _aClinicalXEntities.DoctorBookings.Find(bookingId);
+                if(aBooking!=null)
+                    _aClinicalXEntities.DoctorBookings.Remove(aBooking);
+                _aClinicalXEntities.SaveChanges();
+                _response = Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception e)
+            {
+                _response = Request.CreateResponse(HttpStatusCode.BadRequest, e);
             }
             return _response;
         }
