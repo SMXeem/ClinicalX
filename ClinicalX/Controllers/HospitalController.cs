@@ -79,6 +79,7 @@ namespace ClinicalX.Controllers
             return _response;
         }
 
+
         /// <summary>
         /// Seat booking
         /// </summary>
