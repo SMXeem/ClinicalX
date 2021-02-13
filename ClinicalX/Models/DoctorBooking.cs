@@ -17,6 +17,7 @@ namespace ClinicalX.Models
         public int Id { get; set; }
         public Nullable<int> PatientId { get; set; }
         public Nullable<int> DoctorId { get; set; }
-        public Nullable<System.DateTime> Time { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
+        public string Time { get; set; }
     }
 }

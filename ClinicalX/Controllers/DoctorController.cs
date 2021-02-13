@@ -196,7 +196,6 @@ namespace ClinicalX.Controllers
                 {
                     _response = Request.CreateResponse(HttpStatusCode.NotAcceptable);
                 }
-                aBooking.Time = DateTime.Now;
                 var a = _aClinicalXEntities.DoctorBookings.Add(aBooking);
                 var b = _aClinicalXEntities.SaveChanges();
                 _response = Request.CreateResponse(HttpStatusCode.OK, a);
@@ -221,7 +220,6 @@ namespace ClinicalX.Controllers
                 {
                     _response = Request.CreateResponse(HttpStatusCode.NotAcceptable);
                 }
-                aBooking.Time = DateTime.Now;
                 _aClinicalXEntities.DoctorBookings.AddOrUpdate(aBooking);
                 var b = _aClinicalXEntities.SaveChanges();
                 _response = Request.CreateResponse(HttpStatusCode.OK);

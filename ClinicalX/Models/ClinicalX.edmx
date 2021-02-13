@@ -73,7 +73,8 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PatientId" Type="int" />
           <Property Name="DoctorId" Type="int" />
-          <Property Name="Time" Type="datetime" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Time" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Donner">
           <Key>
@@ -199,7 +200,8 @@ warning 6002: The table/view 'DB_A6D056_clinicalX.dbo.vDoctorBooking' does not h
           <Property Name="Id" Type="int" Nullable="false" />
           <Property Name="PatientId" Type="int" />
           <Property Name="DoctorId" Type="int" />
-          <Property Name="Time" Type="datetime" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Time" Type="nvarchar" MaxLength="50" />
           <Property Name="PName" Type="varchar" MaxLength="50" />
           <Property Name="PAge" Type="varchar" MaxLength="50" />
           <Property Name="PGen" Type="varchar" MaxLength="50" />
@@ -319,6 +321,7 @@ warning 6002: The table/view 'DB_A6D056_clinicalX.dbo.vHospital' does not have a
     [vDoctorBooking].[Id] AS [Id], 
     [vDoctorBooking].[PatientId] AS [PatientId], 
     [vDoctorBooking].[DoctorId] AS [DoctorId], 
+    [vDoctorBooking].[Date] AS [Date], 
     [vDoctorBooking].[Time] AS [Time], 
     [vDoctorBooking].[PName] AS [PName], 
     [vDoctorBooking].[PAge] AS [PAge], 
@@ -616,7 +619,8 @@ warning 6002: The table/view 'DB_A6D056_clinicalX.dbo.vHospital' does not have a
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PatientId" Type="Int32" />
           <Property Name="DoctorId" Type="Int32" />
-          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="vDoctorBooking">
           <Key>
@@ -625,7 +629,8 @@ warning 6002: The table/view 'DB_A6D056_clinicalX.dbo.vHospital' does not have a
           <Property Name="Id" Type="Int32" Nullable="false" />
           <Property Name="PatientId" Type="Int32" />
           <Property Name="DoctorId" Type="Int32" />
-          <Property Name="Time" Type="DateTime" Precision="3" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Time" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="PName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PAge" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PGen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -862,6 +867,7 @@ warning 6002: The table/view 'DB_A6D056_clinicalX.dbo.vHospital' does not have a
             <EntityTypeMapping TypeName="ClinicalXModel.DoctorBooking">
               <MappingFragment StoreEntitySet="DoctorBooking">
                 <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
                 <ScalarProperty Name="PatientId" ColumnName="PatientId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
@@ -886,6 +892,7 @@ warning 6002: The table/view 'DB_A6D056_clinicalX.dbo.vHospital' does not have a
                 <ScalarProperty Name="PAge" ColumnName="PAge" />
                 <ScalarProperty Name="PName" ColumnName="PName" />
                 <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
                 <ScalarProperty Name="PatientId" ColumnName="PatientId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
